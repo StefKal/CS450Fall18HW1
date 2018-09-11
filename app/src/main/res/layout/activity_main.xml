@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:layout_weight="1"
-                android:padding="20dp"
+                android:padding="15dp"
                 android:text="@string/start" />
 
             <Button
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:layout_weight="1"
-                android:padding="20dp"
+                android:padding="15dp"
                 android:text="@string/stop" />
 
             <Button
@@ -50,8 +50,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:layout_weight="1"
-                android:padding="20dp"
+                android:padding="15dp"
                 android:text="@string/reset" />
+            <Button
+                android:id="@+id/bt_resume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:text="@string/Resume" />
 
         </LinearLayout>
 

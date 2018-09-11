@@ -3,5 +3,6 @@
     <string name="stop">Stop</string>
     <string name="start">Start</string>
     <string name="seconds">0</string>
-    <string name="reset">reset</string>
+    <string name="reset">Reset</string>
+    <string name="Resume">Resume</string>
 </resources>

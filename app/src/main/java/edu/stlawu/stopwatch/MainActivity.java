@@ -19,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
     // Define variable for our views
     private TextView tv_count = null;
     private Button bt_start = null;
-    private Button bt_stop =null;
+    private Button bt_stop = null;
     private Button bt_reset = null;
+    private Button bt_resume = null;
     private Timer t = null;
     private Counter ctr = new Counter();  // TimerTask
     private int count;
@@ -41,14 +42,24 @@ public class MainActivity extends AppCompatActivity {
         this.bt_start = findViewById(R.id.bt_start);
         this.bt_stop = findViewById(R.id.bt_stop);
         this.bt_reset = findViewById(R.id.bt_reset);
-        bt_stop.setEnabled(false);
-        bt_reset.setEnabled(false);
+        this.bt_resume = findViewById(R.id.bt_resume);
 
         int count = getPreferences(MODE_PRIVATE).getInt("Count", 0);
         this.count = count;
         this.tv_count.setText(this.time);
         ctr.run();
 
+        if (this.count == 0){
+            bt_start.setEnabled(true);
+            bt_resume.setEnabled(false);
+            bt_stop.setEnabled(false);
+            bt_reset.setEnabled(false);
+        }else{
+            bt_start.setEnabled(false);
+            bt_stop.setEnabled(false);
+            bt_reset.setEnabled(true);
+            bt_resume.setEnabled(true);
+        }
 
         this.bt_start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 bt_start.setEnabled(false);
                 bt_stop.setEnabled(true);
                 bt_reset.setEnabled(true);
+                bt_resume.setEnabled(false);
                 ctr = new Counter();
                 t = new Timer();
 
@@ -72,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
                 t.cancel();
 
-                bt_start.setEnabled(true);
+                bt_reset.setEnabled(true);
+                bt_resume.setEnabled(true);
                 bt_stop.setEnabled(false);
             }
         });
@@ -85,9 +98,21 @@ public class MainActivity extends AppCompatActivity {
                 ctr.run();
                 t.cancel();
 
-
+                bt_resume.setEnabled(false);
                 bt_start.setEnabled(true);
                 bt_stop.setEnabled(false);
+            }
+        });
+
+        this.bt_resume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bt_stop.setEnabled(true);
+                bt_reset.setEnabled(false);
+                ctr = new Counter();
+                t = new Timer();
+
+                t.scheduleAtFixedRate(ctr, 0, 100);
             }
         });
 
