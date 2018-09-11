@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bt_stop.setEnabled(true);
                 bt_reset.setEnabled(false);
+                bt_resume.setEnabled(false);
                 ctr = new Counter();
                 t = new Timer();
 
