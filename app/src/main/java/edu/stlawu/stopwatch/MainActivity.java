@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bt_stop = null;
     private Button bt_reset = null;
     private Button bt_resume = null;
-    private Timer t = null;
+    private Timer t = new Timer();
     private Counter ctr = new Counter();  // TimerTask
     private int count;
     private String time;
