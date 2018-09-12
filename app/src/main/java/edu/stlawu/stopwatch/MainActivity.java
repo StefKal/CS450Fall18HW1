@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         this.tv_count.setText(this.time);
         ctr.run();
 
-        if (this.count == 0){
+        if (count == 0){
             bt_start.setEnabled(true);
             bt_resume.setEnabled(false);
             bt_stop.setEnabled(false);
